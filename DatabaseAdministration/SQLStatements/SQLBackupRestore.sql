@@ -1,0 +1,2 @@
+--Please note for section 9 videos 95-99 I had troubles when I was trying to restore all the files. 
+--I did speak to Clement about it and he said I should just restore the database and just undertstand what was done in the videos.
