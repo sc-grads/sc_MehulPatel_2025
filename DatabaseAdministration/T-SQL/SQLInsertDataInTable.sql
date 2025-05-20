@@ -1,0 +1,1 @@
+INSERT INTO tblSecond VALUES (234)
