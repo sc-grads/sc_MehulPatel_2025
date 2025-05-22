@@ -31,8 +31,8 @@ where EmployeeNumber in (3, 5, 7, 9);
 
 -- Step 4: (Optional) Insert a new transaction manually for testing or demo purposes
 -- This is a corrected version of the original insert attempt
-insert into tblTransaction (EmployeeNumber, Amount, TransactionDate)
-values (194, 100.00, GETDATE());
+--insert into tblTransaction (EmployeeNumber, Amount, TransactionDate)
+--values (194, 100.00, GETDATE());
 
 -- Step 5: Delete any remaining transactions still linked to EmployeeNumber = 3
 -- This might be unnecessary if all were already updated above
