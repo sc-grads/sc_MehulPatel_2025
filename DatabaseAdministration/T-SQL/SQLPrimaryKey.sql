@@ -3,7 +3,6 @@
 alter table tblEmployee  
 add constraint PK_tblEmployee PRIMARY KEY (EmployeeNumber)  
 
-
 -- Inserts a new employee record with specified details into tblEmployee
 insert into tblEmployee(EmployeeNumber, EmployeeFirstName, EmployeeMiddleName, EmployeeLastName,  
                        EmployeeGovernmentID, DateOfBirth, Department)  
