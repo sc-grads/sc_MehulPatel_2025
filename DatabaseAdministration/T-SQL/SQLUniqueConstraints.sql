@@ -1,7 +1,7 @@
 -- Add a unique constraint on the EmployeeGovernmentID column in the tblEmployee table
 -- This ensures no two employees can have the same government ID
 alter table tblEmployee
-ADD CONSTRAINT unqGovernmentID UNIQUE (EmployeeGovernmentID);
+ADD CONSTRAINT unqGovernmentID UNIQUE (EmployeeGovernmentID);-- this does not work
 
 -- Select government IDs that appear more than once in the tblEmployee table
 -- Useful to identify duplicates before applying a unique constraint

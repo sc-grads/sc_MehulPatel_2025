@@ -19,8 +19,8 @@ add constraint chkMiddleName check
 
 
 -- Drops the previously created CHECK constraint named 'chkMiddleName' from tblEmployee table
-alter table tblEmployee  
-drop constraint chkMiddleName  
+--alter table tblEmployee  
+--drop constraint chkMiddleName  
 
 
 -- Starts a transaction block to test data insertion safely
@@ -28,7 +28,7 @@ begin tran
 
   -- Attempts to insert a new employee record where EmployeeMiddleName contains a '.'
   insert into tblEmployee  
-  values (2003, 'A', 'B.', 'C', 'D', '2014-01-01', 'Accounts')  
+  values (2003, 'A', 'B', 'C', 'D', '2014-01-01', 'Accounts')  
 
   -- Selects the newly inserted employee row to verify insertion
   select * from tblEmployee where EmployeeNumber = 2003  
@@ -62,7 +62,7 @@ rollback tran
 -- Adds a CHECK constraint named CK_EmployeeMiddleName on the column
 -- Ensures EmployeeMiddleName cannot contain '.' character or can be NULL
 create table tblEmployee2  
-(EmployeeMiddleName varchar(50) null,  
+(EmployeeMiddleName varchar(50) null,
 constraint CK_EmployeeMiddleName check  
 (REPLACE(EmployeeMiddleName, '.', '') = EmployeeMiddleName or EmployeeMiddleName is null))  
 
