@@ -11,17 +11,27 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{C8301D99-1DFA-4456-B7A5-9BCD2EB9941D}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{E571DE19-2693-4057-85D0-5F9C981D5EBB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{78C51ED7-700B-4603-9ECD-80ED55E38FF7}"
+      DTS:ObjectName="ParentCounter">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">10</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Execute Package Task"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{D58F252B-32F0-40DB-A738-025ED110342E}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -32,6 +42,10 @@
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
           <PackageName>04_ChildPackage.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>ChildParameter</ParameterName>
+            <BindedVariableOrParameterName>$Package::ParentCounter</BindedVariableOrParameterName>
+          </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -39,7 +53,6 @@
       DTS:refId="Package\Script Task"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:Disabled="True"
       DTS:DTSID="{E90D7B09-3FC5-4C8E-B679-1EA5438D5499}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
