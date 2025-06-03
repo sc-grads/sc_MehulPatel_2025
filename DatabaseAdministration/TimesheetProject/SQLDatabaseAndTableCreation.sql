@@ -15,7 +15,7 @@ CREATE TABLE Project (
     FOREIGN KEY (ClientID) REFERENCES Client(ClientID)
 );
 
-CREATE TABLE TimesheetEntries (
+CREATE TABLE TimesheetEntry (
     TimesheetID INT PRIMARY KEY IDENTITY,
     EmployeeID INT NOT NULL,
     ProjectID INT NOT NULL,
