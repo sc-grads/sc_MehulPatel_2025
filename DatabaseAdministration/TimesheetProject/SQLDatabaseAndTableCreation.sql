@@ -5,12 +5,12 @@ CREATE TABLE Employee (
 
 CREATE TABLE Client (
     ClientID INT PRIMARY KEY IDENTITY,
-    ClientName NVARCHAR(100) NOT NULL UNIQUE
+    ClientName NVARCHAR(100) NULL 
 );
 
 CREATE TABLE Project (
     ProjectID INT PRIMARY KEY IDENTITY,
-    ProjectName NVARCHAR(100) NOT NULL,
+    ProjectName NVARCHAR(100) NULL,
     ClientID INT NOT NULL,
     FOREIGN KEY (ClientID) REFERENCES Client(ClientID)
 );
@@ -19,14 +19,17 @@ CREATE TABLE TimesheetEntry (
     TimesheetID INT PRIMARY KEY IDENTITY,
     EmployeeID INT NOT NULL,
     ProjectID INT NOT NULL,
-    WorkDate DATE NOT NULL,
-    DayOfWeek VARCHAR(10),
-    Description NVARCHAR(255),
-    Billable BIT,
+    WorkDate DATE ,
+    DayOfWeek NVARCHAR(50),
+    Description NVARCHAR(100),
+    Billable NVARCHAR(50),
     Comments NVARCHAR(255),
-    TotalHours DECIMAL(4,2),
-    StartTime TIME,
-    EndTime TIME,
+    TotalHours DECIMAL(5,2),
+    StartTime TIME(0),
+    EndTime TIME(0),
     FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID),
-    FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
+    FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID),
+	CONSTRAINT CheckTimeOrder CHECK (EndTime > StartTime),
+    CONSTRAINT CheckTotalHours CHECK (TotalHours >= 0 AND TotalHours <= 24),
+    
 );
