@@ -15,7 +15,7 @@ CREATE TABLE Project (
     FOREIGN KEY (ClientID) REFERENCES Client(ClientID)
 );
 
-CREATE TABLE TimesheetEntry (
+CREATE TABLE Timesheet(
     TimesheetID INT PRIMARY KEY IDENTITY,
     EmployeeID INT NOT NULL,
     ProjectID INT NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE TimesheetEntry (
     DayOfWeek NVARCHAR(50),
     Description NVARCHAR(100),
     Billable NVARCHAR(50),
-    Comments NVARCHAR(255),
+    Comments NVARCHAR(4000),
     TotalHours DECIMAL(5,2),
     StartTime TIME(0),
     EndTime TIME(0),
