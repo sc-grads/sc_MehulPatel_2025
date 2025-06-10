@@ -16,6 +16,7 @@ CREATE TABLE Timesheet (
     TimesheetID INT IDENTITY(1,1) PRIMARY KEY,
     EmployeeID INT NULL,
     Date DATE NULL,
+    DofWeek NVARCHAR(100),
     ClientID INT NULL,
 	ClientProjectName NVARCHAR(100),
     Description NVARCHAR(255) NULL,
