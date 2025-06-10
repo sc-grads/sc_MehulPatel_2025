@@ -14,9 +14,9 @@ CREATE TABLE Client (
 -- Create Timesheet table (Weekdays only)
 CREATE TABLE Timesheet (
     TimesheetID INT IDENTITY(1,1) PRIMARY KEY,
-    EmployeeID INT NOT NULL,
-    Date DATE NOT NULL,
-    ClientID INT NOT NULL,
+    EmployeeID INT NULL,
+    Date DATE NULL,
+    ClientID INT NULL,
 	ClientProjectName NVARCHAR(100),
     Description NVARCHAR(255) NULL,
     IsBillable NVARCHAR(255),
