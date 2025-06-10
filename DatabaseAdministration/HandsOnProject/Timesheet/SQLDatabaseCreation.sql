@@ -19,7 +19,7 @@ CREATE TABLE Timesheet (
     ClientID INT NOT NULL,
 	ClientProjectName NVARCHAR(100),
     Description NVARCHAR(255) NULL,
-    IsBillable BIT NULL,
+    IsBillable NVARCHAR(255),
     Comments NVARCHAR(max) NULL,
     StartTime TIME NULL,
     EndTime TIME NULL,
