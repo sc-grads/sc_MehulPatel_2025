@@ -1,43 +1,43 @@
 <?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="6/9/2025 8:23:02 AM"
+  DTS:CreationDate="6/10/2025 9:01:36 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="LAPTOP-VL9R9CSO"
   DTS:CreatorName="LAPTOP-VL9R9CSO\MehulP"
-  DTS:DTSID="{199F5B75-C91B-4E81-A738-0974998FCAB4}"
+  DTS:DTSID="{F94ED378-E713-4012-860E-CEF69F20858D}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5685.0"
   DTS:LocaleID="7177"
-  DTS:ObjectName="Package12"
+  DTS:ObjectName="Package10"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{EA32FDB5-511A-4F0B-ABD9-168C4D374F6B}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{45E19645-4F09-4F0A-BAFA-FF0225410469}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 3]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{7CEDD7E0-7484-4A93-894C-B16C4DA13B75}"
-      DTS:ObjectName="Excel Connection Manager 1">
+      DTS:DTSID="{93562CCD-8A10-47B3-A80C-3872BA9785CF}"
+      DTS:ObjectName="Excel Connection Manager 3">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Timesheets\Evashan Govender\Evashan Govender April Final Week Timesheet.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Timesheet\Evashan Govender\Evashan Govender April Final Week Timesheet.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=NO&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LAPTOP-VL9R9CSO.TimesheetDB]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{DFE16380-C1A6-4AEC-9291-98FC9F6AA836}"
+      DTS:DTSID="{9CB147FA-A856-4805-8EFA-3C20A37A1238}"
       DTS:ObjectName="LAPTOP-VL9R9CSO.TimesheetDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=LAPTOP-VL9R9CSO;Initial Catalog=TimesheetDB;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package12-{DFE16380-C1A6-4AEC-9291-98FC9F6AA836}LAPTOP-VL9R9CSO.TimesheetDB;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=LAPTOP-VL9R9CSO;Initial Catalog=TimesheetDB;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package10-{9CB147FA-A856-4805-8EFA-3C20A37A1238}LAPTOP-VL9R9CSO.TimesheetDB;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -47,7 +47,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{3E68F2AF-7C16-4EF7-98D8-CFFF88CF92F4}"
+      DTS:DTSID="{53CD7A32-DBD9-4D1D-B6B9-0933A264141C}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -70,11 +70,11 @@
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Internal Sambe]"
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[F1]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="Internal Sambe"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Internal Sambe]" />
+                      cachedName="F1"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[F1]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -87,20 +87,20 @@
                   synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Internal Sambe]"
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of F1]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="255"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Internal Sambe]"
-                      name="Copy of Internal Sambe"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of F1]"
+                      name="Copy of F1"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Internal Sambe]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[F1]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -177,8 +177,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Excel Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 3]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 3]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -188,23 +188,23 @@
                   name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Internal Sambe]"
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[F1]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Internal Sambe]"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[F1]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Internal Sambe]"
-                      name="Internal Sambe"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[F1]"
+                      name="F1"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Internal Sambe]"
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[F1]"
                       dataType="wstr"
                       length="255"
-                      name="Internal Sambe" />
+                      name="F1" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -213,11 +213,11 @@
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Internal Sambe]"
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[F1]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Internal Sambe]"
-                      name="Internal Sambe" />
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[F1]"
+                      name="F1" />
                     <outputColumn
                       refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -308,12 +308,12 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Internal Sambe]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of F1]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="Copy of Internal Sambe"
+                      cachedName="Copy of F1"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientName]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Internal Sambe]" />
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of F1]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -386,7 +386,7 @@
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Data Flow Task"
-          TopLeft="229.999987433355,94.4666660097573" />
+          TopLeft="168.333324136006,133.466665738556" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -398,41 +398,37 @@
         <NodeLayout
           Size="140,41.6"
           Id="Package\Data Flow Task\Excel Source"
-          TopLeft="303.333316759931,15.5999998915195" />
+          TopLeft="239.999986886979,21.6666665159993" />
         <NodeLayout
           Size="156,41.6"
           Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="352.49998074025,110.066665901277" />
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="244.999986613791,209.733331874874" />
+          TopLeft="277.499984838069,144.733332326876" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="430.49998074025,151.666665901277">
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="309.999986886979,63.2666665159993">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-99.899994126459,58.0666659735969"
+              EndConnector="45.4999979510904,81.4666658108764"
               Start="0,0"
-              End="-99.899994126459,50.5666659735969">
+              End="45.4999979510904,73.9666658108764">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.0333329867984" />
+                    End="0,36.7333329054382" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.0333329867984"
-                    Point2="0,29.0333329867984"
-                    Point3="-4,29.0333329867984" />
+                    Point1="0,36.7333329054382"
+                    Point2="0,40.7333329054382"
+                    Point3="4,40.7333329054382" />
                   <mssgle:LineSegment
-                    End="-95.899994126459,29.0333329867984" />
+                    End="41.4999979510904,40.7333329054382" />
                   <mssgle:CubicBezierSegment
-                    Point1="-95.899994126459,29.0333329867984"
-                    Point2="-99.899994126459,29.0333329867984"
-                    Point3="-99.899994126459,33.0333329867984" />
+                    Point1="41.4999979510904,40.7333329054382"
+                    Point2="45.4999979510904,40.7333329054382"
+                    Point3="45.4999979510904,44.7333329054382" />
                   <mssgle:LineSegment
-                    End="-99.899994126459,50.5666659735969" />
+                    End="45.4999979510904,73.9666658108764" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -441,32 +437,36 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="206.666655374898,272.999998101592" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output]"
-          TopLeft="373.333316759931,57.1999998915195">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="355.499984838069,186.333332326876">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="57.166663980319,52.8666660097576"
+              EndConnector="-63.2333294631709,86.6666657747163"
               Start="0,0"
-              End="57.166663980319,45.3666660097576">
+              End="-63.2333294631709,79.1666657747163">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.4333330048788" />
+                    End="0,39.3333328873582" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.4333330048788"
-                    Point2="0,26.4333330048788"
-                    Point3="4,26.4333330048788" />
+                    Point1="0,39.3333328873582"
+                    Point2="0,43.3333328873582"
+                    Point3="-4,43.3333328873582" />
                   <mssgle:LineSegment
-                    End="53.166663980319,26.4333330048788" />
+                    End="-59.2333294631709,43.3333328873582" />
                   <mssgle:CubicBezierSegment
-                    Point1="53.166663980319,26.4333330048788"
-                    Point2="57.166663980319,26.4333330048788"
-                    Point3="57.166663980319,30.4333330048788" />
+                    Point1="-59.2333294631709,43.3333328873582"
+                    Point2="-63.2333294631709,43.3333328873582"
+                    Point3="-63.2333294631709,47.3333328873582" />
                   <mssgle:LineSegment
-                    End="57.166663980319,45.3666660097576" />
+                    End="-63.2333294631709,79.1666657747163" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
