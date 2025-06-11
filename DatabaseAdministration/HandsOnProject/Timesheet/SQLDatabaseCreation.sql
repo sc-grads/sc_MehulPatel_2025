@@ -31,3 +31,15 @@ CREATE TABLE Timesheet (
     ) -- 2 = Monday, 6 = Friday (default SQL Server config)
 );
 
+--Create Leave table
+CREATE TABLE [dbo].[Leave](
+	[LeaveID] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeName] [nvarchar](100) NULL,
+	[TypeOfLeave] [nvarchar](100) NULL,
+	[StartDate] [date] NULL,
+	[EndDate] [date] NULL,
+	[NumberOfDays] [int] NULL,
+	[ApprovalObtained] [nvarchar](100) NULL,
+	[SickNote] [nvarchar](255) NULL
+);	
+
