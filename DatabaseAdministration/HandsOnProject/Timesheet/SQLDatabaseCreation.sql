@@ -54,3 +54,11 @@ CREATE TABLE AuditLog (
     
    );
 
+--errorlog table
+CREATE TABLE ErrorLog (
+    ErrorID INT IDENTITY(1,1) PRIMARY KEY,
+    FilePath NVARCHAR(500),
+    ErrorCode INT,
+    ErrorMessage NVARCHAR(max),
+    ErrorTimestamp DATETIME DEFAULT GETDATE()
+);
