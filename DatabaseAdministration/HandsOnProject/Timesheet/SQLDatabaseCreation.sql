@@ -42,4 +42,16 @@ CREATE TABLE [dbo].[Leave](
 	[ApprovalObtained] [nvarchar](100) NULL,
 	[SickNote] [nvarchar](255) NULL
 );	
+--Audit table
+CREATE TABLE AuditLog (
+    AuditID INT IDENTITY(1,1) PRIMARY KEY,
+	EmployeeID INT,
+    TableName NVARCHAR(50) NOT NULL,         -- e.g., 'Timesheet'
+    TaskName NVARCHAR(50) NOT NULL,        -- 'INSERT', 'UPDATE', 'DELETE'
+	NameOfFile NVARCHAR(100) ,
+	Month NVARCHAR(50),
+	Details NVARCHAR(4000),
+    ActionTimestamp DATETIME NULL DEFAULT GETDATE(),
+    
+   );
 
