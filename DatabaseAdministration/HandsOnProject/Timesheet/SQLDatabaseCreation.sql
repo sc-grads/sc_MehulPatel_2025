@@ -22,8 +22,8 @@ CREATE TABLE Timesheet (
     Description NVARCHAR(255) NULL,
     IsBillable NVARCHAR(255),
     Comments NVARCHAR(max) NULL,
-    StartTime TIME NULL,
-    EndTime TIME NULL,
+    StartTime TIME(1) NULL,
+    EndTime TIME(1) NULL,
     HoursWorked DECIMAL(5,2) NULL,
     FOREIGN KEY (EmployeeID) REFERENCES EmployeeName(EmployeeID),
     CHECK (
