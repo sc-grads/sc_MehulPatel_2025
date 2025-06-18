@@ -1,5 +1,5 @@
 
-#Deploy SSIS Packages
+#Testing auto deployment trigger 
 name: Deploy SSIS Packages
 
 on:
