@@ -1,0 +1,32 @@
+#testing auto-deployment trigger
+
+name: Deploy SSIS Packages
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-ssis.yml'
+
+jobs:
+  run-ssis-packages:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run SSIS Job - EmployeeName
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" -Q "EXEC msdb.dbo.sp_start_job @job_name='EmployeeJob'"
+
+      - name: Run SSIS Job - Client
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" -Q "EXEC msdb.dbo.sp_start_job @job_name='ClientTableJob'"
+
+      - name: Run SSIS Job - Timesheet
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" -Q "EXEC msdb.dbo.sp_start_job @job_name='TimesheetJob'"
+
+      - name: Run SSIS Job - Leave
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" -Q "EXEC msdb.dbo.sp_start_job @job_name='LeaveTableJob'"
