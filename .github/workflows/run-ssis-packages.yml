@@ -1,0 +1,41 @@
+name: Deploy SSIS Project and Run Jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-and-run:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy SSIS Package (.ispac)
+        run: |
+          "C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\ISDeploymentWizard.exe" ^
+            /Silent ^
+            /SourcePath:"packages\monitoring-db.ispac" ^
+            /DestinationServer:"localhost" ^
+            /DestinationPath:"SSISDB\MonitoringFolder\MonitoringProject"
+
+      - name: Run SQL Agent Job - ClientTableJob
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" ^
+          -Q "EXEC msdb.dbo.sp_start_job @job_name='ClientTableJob'"
+
+      - name: Run SQL Agent Job - EmployeeJob
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" ^
+          -Q "EXEC msdb.dbo.sp_start_job @job_name='EmployeeJob'"
+
+      - name: Run SQL Agent Job - TimesheetJob
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" ^
+          -Q "EXEC msdb.dbo.sp_start_job @job_name='TimesheetJob'"
+
+      - name: Run SQL Agent Job - LeaveTableJob
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" ^
+          -Q "EXEC msdb.dbo.sp_start_job @job_name='LeaveTableJob'"
+
