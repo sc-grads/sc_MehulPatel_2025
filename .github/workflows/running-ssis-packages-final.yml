@@ -29,38 +29,14 @@ jobs:
           -Q "EXEC [catalog].[create_folder] @folder_name='MonitoringFolder'"
 
       - name: Deploy SSIS Package using SSISDeploy
-        shell: powershell
+        shell: cmd
         run: |
-          & "C:\DevopTools\SSISDeploy.exe" `
-            -sourcePath "C:\Repositories\sc_MehulPatel_2025\DatabaseAdministration\HandsOnProject\Timesheet\TimesheetProject.ispac" `
-            -destinationServer "localhost" `
-            -destinationPath "/SSISDB/MonitoringFolder/TimesheetProject" `
-            -authenticationType "Windows" `
-            2>&1 | Out-File -FilePath "ssisdeploy.log"
-          if ($LASTEXITCODE -ne 0) { throw "SSISDeploy failed. See ssisdeploy.log for details." }
-          Get-Content -Path "ssisdeploy.log"
+            C:\DevopTools\SSISDeploy.exe -s:C:\Repositories\sc_MehulPatel_2025\DatabaseAdministration\HandsOnProject\Timesheet\TimesheetProject.ispac ^
+            -d:CATALOG;/SSISDB/MonitoringFolder/TimesheetProject;LAPTOP-VL9R9CSO ^
+            -authType:WIN ^
+            -l:deploy.log
 
-      - name: Run SQL Agent Job - ClientTableJob
-        shell: powershell
-        run: |
-          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
-          -Q "EXEC msdb.dbo.sp_start_job @job_name='ClientTableJob'"
 
-      - name: Run SQL Agent Job - EmployeeJob
-        shell: powershell
-        run: |
-          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
-          -Q "EXEC msdb.dbo.sp_start_job @job_name='EmployeeJob'"
-
-      - name: Run SQL Agent Job - TimesheetJob
-        shell: powershell
-        run: |
-          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
-          -Q "EXEC msdb.dbo.sp_start_job @job_name='TimesheetJob'"
-
-      - name: Run SQL Agent Job - LeaveTableJob
-        shell: powershell
-        run: |
-          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
-          -Q "EXEC msdb.dbo.sp_start_job @job_name='LeaveTableJob'"
+         
+      
  
