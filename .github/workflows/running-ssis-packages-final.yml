@@ -10,34 +10,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          clean: true
-          fetch-depth: 1
-
-      - name: Verify Git Checkout
-        shell: powershell
-        run: |
-          Write-Output "Current directory: $PWD"
-          git status
-          dir
 
       - name: Set PowerShell Execution Policy
         shell: powershell
         run: |
-          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-          Write-Output "Execution policy set to Bypass"
-
+          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+     
       - name: Create SSIS Folder
         shell: cmd
         run: |
-          sqlcmd -S LAPTOP-VL9R9CSO -d SSISDB -E -Q "EXEC [catalog].[create_folder] @folder_name='TimesheetProject'"
-          if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
-
+          sqlcmd -S LAPTOP-VL9R9CSO -d SSISDB -E 
+          -Q "EXEC [catalog].[create_folder] @folder_name='TimesheetProject'"
       - name: Deploy SSIS Package using SSISDeploy
         shell: cmd
         run: |
-          C:\DevopTools\SSISDeploy.exe -s:C:\Repositories\sc_MehulPatel_2025\DatabaseAdministration\HandsOnProject\Timesheet\TimesheetProject.ispac ^
-          -d:CATALOG;/SSISDB/TimesheetProject/TimesheetProject;LAPTOP-VL9R9CSO ^
-          -authType:WIN
-          if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
+            C:\DevopTools\SSISDeploy.exe -s:C:\Repositories\sc_MehulPatel_2025\DatabaseAdministration\HandsOnProject\Timesheet\TimesheetProject.ispac ^
+            -d:CATALOG;/SSISDB/TimesheetProject/TimesheetProject;LAPTOP-VL9R9CSO ^
+            -authType:WIN ^
  
