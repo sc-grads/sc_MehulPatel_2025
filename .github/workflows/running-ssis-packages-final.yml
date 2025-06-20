@@ -21,14 +21,21 @@ jobs:
         run: |
           Get-ChildItem -Path "${{ github.workspace }}" -Recurse | Format-Table Name, Directory, Length, LastWriteTime
 
+      - name: Copy ispac File to Workspace
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Path "${{ github.workspace }}\packages" -Force
+          Copy-Item -Path "C:\SSIS\monitoring-db.ispac" -Destination "${{ github.workspace }}\packages\monitoring-db.ispac" -Force
+          Get-ChildItem -Path "${{ github.workspace }}\packages\monitoring-db.ispac" | Format-Table Name, Length, LastWriteTime
+
       - name: Verify ispac File
         shell: powershell
         run: |
-          if (-not (Test-Path "${{ github.workspace }}\DatabaseAdministration\HandsOnProject\Timesheet\monitoring-db.ispac")) {
-            Write-Error "monitoring-db.ispac not found in ${{ github.workspace }}\DatabaseAdministration\HandsOnProject\Timesheet"
+          if (-not (Test-Path "${{ github.workspace }}\packages\monitoring-db.ispac")) {
+            Write-Error "monitoring-db.ispac not found in ${{ github.workspace }}\packages"
             exit 1
           }
-          Get-ChildItem -Path "${{ github.workspace }}\DatabaseAdministration\HandsOnProject\Timesheet\monitoring-db.ispac" | Format-Table Name, Length, LastWriteTime
+          Get-ChildItem -Path "${{ github.workspace }}\packages\monitoring-db.ispac" | Format-Table Name, Length, LastWriteTime
 
       - name: Debug DevopTools Directory
         shell: powershell
@@ -45,7 +52,7 @@ jobs:
         shell: powershell
         run: |
           & "C:\DevopTools\SSISDeploy.exe" `
-            -sourcePath "${{ github.workspace }}\DatabaseAdministration\HandsOnProject\Timesheet\monitoring-db.ispac" `
+            -sourcePath "${{ github.workspace }}\packages\monitoring-db.ispac" `
             -destinationServer "localhost" `
             -destinationPath "/SSISDB/MonitoringFolder/MonitoringProject" `
             -authenticationType "Windows" `
@@ -76,3 +83,4 @@ jobs:
         run: |
           sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
           -Q "EXEC msdb.dbo.sp_start_job @job_name='LeaveTableJob'"
+ 
