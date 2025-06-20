@@ -16,14 +16,9 @@ jobs:
         run: |
           Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
-      - name: Debug Repository Contents
-        shell: powershell
-        run: |
-          Get-ChildItem -Path "${{ github.workspace }}" -Recurse | Format-Table Name, Directory, Length, LastWriteTime
-
      
       - name: Create SSIS Folder
-        shell: powershell
+        shell: cmd
         run: |
           sqlcmd -S LAPTOP-VL9R9CSO -d SSISDB -E `
           -Q "EXEC [catalog].[create_folder] @folder_name='TimesheetProject'"
