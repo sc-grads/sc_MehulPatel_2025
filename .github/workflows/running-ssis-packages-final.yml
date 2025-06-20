@@ -21,27 +21,7 @@ jobs:
         run: |
           Get-ChildItem -Path "${{ github.workspace }}" -Recurse | Format-Table Name, Directory, Length, LastWriteTime
 
-      - name: Copy ispac File to Workspace
-        shell: powershell
-        run: |
-          New-Item -ItemType Directory -Path "${{ github.workspace }}\packages" -Force
-          Copy-Item -Path "C:\SSIS\monitoring-db.ispac" -Destination "${{ github.workspace }}\packages\monitoring-db.ispac" -Force
-          Get-ChildItem -Path "${{ github.workspace }}\packages\monitoring-db.ispac" | Format-Table Name, Length, LastWriteTime
-
-      - name: Verify ispac File
-        shell: powershell
-        run: |
-          if (-not (Test-Path "${{ github.workspace }}\packages\monitoring-db.ispac")) {
-            Write-Error "monitoring-db.ispac not found in ${{ github.workspace }}\packages"
-            exit 1
-          }
-          Get-ChildItem -Path "${{ github.workspace }}\packages\monitoring-db.ispac" | Format-Table Name, Length, LastWriteTime
-
-      - name: Debug DevopTools Directory
-        shell: powershell
-        run: |
-          Get-ChildItem -Path "C:\DevopTools" -Recurse | Format-Table Name, Length, LastWriteTime
-
+     
       - name: Create SSIS Folder
         shell: powershell
         run: |
@@ -52,9 +32,9 @@ jobs:
         shell: powershell
         run: |
           & "C:\DevopTools\SSISDeploy.exe" `
-            -sourcePath "${{ github.workspace }}\packages\monitoring-db.ispac" `
+            -sourcePath "C:\Repositories\sc_MehulPatel_2025\DatabaseAdministration\HandsOnProject\Timesheet\TimesheetProject.ispac" `
             -destinationServer "localhost" `
-            -destinationPath "/SSISDB/MonitoringFolder/MonitoringProject" `
+            -destinationPath "/SSISDB/MonitoringFolder/TimesheetProject" `
             -authenticationType "Windows" `
             2>&1 | Out-File -FilePath "ssisdeploy.log"
           if ($LASTEXITCODE -ne 0) { throw "SSISDeploy failed. See ssisdeploy.log for details." }
