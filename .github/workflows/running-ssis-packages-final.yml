@@ -16,21 +16,36 @@ jobs:
         run: |
           Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
+      - name: Debug Repository Contents
+        shell: powershell
+        run: |
+          Get-ChildItem -Path "${{ github.workspace }}" -Recurse | Format-Table Name, Directory, Length, LastWriteTime
+
       - name: Verify ispac File
         shell: powershell
         run: |
-          Get-ChildItem -Path "${{ github.workspace }}\packages\monitoring-db.ispac" | Format-Table Name, Length, LastWriteTime
+          if (-not (Test-Path "${{ github.workspace }}\DatabaseAdministration\HandsOnProject\Timesheet\monitoring-db.ispac")) {
+            Write-Error "monitoring-db.ispac not found in ${{ github.workspace }}\DatabaseAdministration\HandsOnProject\Timesheet"
+            exit 1
+          }
+          Get-ChildItem -Path "${{ github.workspace }}\DatabaseAdministration\HandsOnProject\Timesheet\monitoring-db.ispac" | Format-Table Name, Length, LastWriteTime
 
-      - name: Debug Directory Contents
+      - name: Debug DevopTools Directory
         shell: powershell
         run: |
           Get-ChildItem -Path "C:\DevopTools" -Recurse | Format-Table Name, Length, LastWriteTime
+
+      - name: Create SSIS Folder
+        shell: powershell
+        run: |
+          sqlcmd -S localhost -d SSISDB -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
+          -Q "EXEC [catalog].[create_folder] @folder_name='MonitoringFolder'"
 
       - name: Deploy SSIS Package using SSISDeploy
         shell: powershell
         run: |
           & "C:\DevopTools\SSISDeploy.exe" `
-            -sourcePath "${{ github.workspace }}\packages\monitoring-db.ispac" `
+            -sourcePath "${{ github.workspace }}\DatabaseAdministration\HandsOnProject\Timesheet\monitoring-db.ispac" `
             -destinationServer "localhost" `
             -destinationPath "/SSISDB/MonitoringFolder/MonitoringProject" `
             -authenticationType "Windows" `
