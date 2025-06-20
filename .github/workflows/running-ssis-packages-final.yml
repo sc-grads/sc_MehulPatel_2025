@@ -25,7 +25,7 @@ jobs:
       - name: Create SSIS Folder
         shell: powershell
         run: |
-          sqlcmd -S localhost -d SSISDB -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
+          sqlcmd -S localhost -d SSISDB -E" `
           -Q "EXEC [catalog].[create_folder] @folder_name='MonitoringFolder'"
 
       - name: Deploy SSIS Package using SSISDeploy
