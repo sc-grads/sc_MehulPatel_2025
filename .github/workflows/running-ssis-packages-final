@@ -1,0 +1,54 @@
+name: Deploy SSIS Package and Run SQL Jobs
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  deploy-and-run:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install SSISDevOpsTools Module (if not already installed)
+        shell: powershell
+        run: |
+          if (-not (Get-Module -ListAvailable -Name SSISDevOpsTools)) {
+            Install-Module -Name SSISDevOpsTools -Force -Scope CurrentUser
+          }
+
+      - name: Deploy SSIS Package (.ispac) using SSISDevOpsTools
+        shell: powershell
+        run: |
+          Import-Module SSISDevOpsTools
+          Deploy-ISProject `
+            -ServerName "localhost" `
+            -FolderName "MonitoringFolder" `
+            -ProjectName "MonitoringProject" `
+            -Path "packages\monitoring-db.ispac" `
+            -AuthenticationType "Windows"  # Or use "SQLServer" with -Username and -Password
+
+      - name: Run SQL Agent Job - ClientTableJob
+        shell: powershell
+        run: >
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}"
+          -Q "EXEC msdb.dbo.sp_start_job @job_name='ClientTableJob'"
+
+      - name: Run SQL Agent Job - EmployeeJob
+        shell: powershell
+        run: >
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}"
+          -Q "EXEC msdb.dbo.sp_start_job @job_name='EmployeeJob'"
+
+      - name: Run SQL Agent Job - TimesheetJob
+        shell: powershell
+        run: >
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}"
+          -Q "EXEC msdb.dbo.sp_start_job @job_name='TimesheetJob'"
+
+      - name: Run SQL Agent Job - LeaveTableJob
+        shell: powershell
+        run: >
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}"
+          -Q "EXEC msdb.dbo.sp_start_job @job_name='LeaveTableJob'"
