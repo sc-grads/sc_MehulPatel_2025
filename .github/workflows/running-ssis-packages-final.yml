@@ -25,7 +25,7 @@ jobs:
       - name: Create SSIS Folder
         shell: powershell
         run: |
-          sqlcmd -S localhost -d SSISDB -E `
+          sqlcmd -S LAPTOP-VL9R9CSO -d SSISDB -E `
           -Q "EXEC [catalog].[create_folder] @folder_name='TimesheetProject'"
 
       - name: Deploy SSIS Package using SSISDeploy
