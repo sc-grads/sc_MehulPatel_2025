@@ -1,7 +1,7 @@
-name: Deploy SSIS Package and Run SQL Jobs
+name: Deploy SSIS Package and Run SQL Jobs Final
 
 on:
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
 
 jobs:
   deploy-and-run:
@@ -11,37 +11,53 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy SSIS Package (.ispac) using SSISDevOpsTools
+      - name: Set PowerShell Execution Policy
         shell: powershell
         run: |
-          Import-Module SSISDevOpsTools
-          Deploy-ISProject `
-            -ServerName "localhost" `
-            -FolderName "MonitoringFolder" `
-            -ProjectName "MonitoringProject" `
-            -Path "packages\monitoring-db.ispac" `
-            -AuthenticationType "Windows"  # Or use "SQLServer" with -Username and -Password
+          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+      - name: Verify ispac File
+        shell: powershell
+        run: |
+          Get-ChildItem -Path "${{ github.workspace }}\packages\monitoring-db.ispac" | Format-Table Name, Length, LastWriteTime
+
+      - name: Debug Directory Contents
+        shell: powershell
+        run: |
+          Get-ChildItem -Path "C:\DevopTools" -Recurse | Format-Table Name, Length, LastWriteTime
+
+      - name: Deploy SSIS Package using SSISDeploy
+        shell: powershell
+        run: |
+          & "C:\DevopTools\SSISDeploy.exe" `
+            -sourcePath "${{ github.workspace }}\packages\monitoring-db.ispac" `
+            -destinationServer "localhost" `
+            -destinationPath "/SSISDB/MonitoringFolder/MonitoringProject" `
+            -authenticationType "Windows" `
+            2>&1 | Out-File -FilePath "ssisdeploy.log"
+          if ($LASTEXITCODE -ne 0) { throw "SSISDeploy failed. See ssisdeploy.log for details." }
+          Get-Content -Path "ssisdeploy.log"
 
       - name: Run SQL Agent Job - ClientTableJob
         shell: powershell
-        run: >
-          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}"
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
           -Q "EXEC msdb.dbo.sp_start_job @job_name='ClientTableJob'"
 
       - name: Run SQL Agent Job - EmployeeJob
         shell: powershell
-        run: >
-          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}"
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
           -Q "EXEC msdb.dbo.sp_start_job @job_name='EmployeeJob'"
 
       - name: Run SQL Agent Job - TimesheetJob
         shell: powershell
-        run: >
-          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}"
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
           -Q "EXEC msdb.dbo.sp_start_job @job_name='TimesheetJob'"
 
       - name: Run SQL Agent Job - LeaveTableJob
         shell: powershell
-        run: >
-          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}"
+        run: |
+          sqlcmd -S localhost -d msdb -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" `
           -Q "EXEC msdb.dbo.sp_start_job @job_name='LeaveTableJob'"
