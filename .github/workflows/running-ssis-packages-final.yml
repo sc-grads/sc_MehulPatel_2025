@@ -12,24 +12,21 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set PowerShell Execution Policy
-        shell: powershell
-        run: |
-          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+        shell: pwsh
+        run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
-     
       - name: Create SSIS Folder
-        shell: cmd
+        shell: pwsh
         run: |
-          sqlcmd -S LAPTOP-VL9R9CSO -d SSISDB -E `
-          -Q "EXEC [catalog].[create_folder] @folder_name='TimesheetProject'"
+          sqlcmd -S LAPTOP-VL9R9CSO -d SSISDB -E -Q "EXEC [catalog].[create_folder] @folder_name='TimesheetProject'"
 
       - name: Deploy SSIS Package using SSISDeploy
-        shell: cmd
+        shell: pwsh
         run: |
-            C:\DevopTools\SSISDeploy.exe -s:C:\Repositories\sc_MehulPatel_2025\DatabaseAdministration\HandsOnProject\Timesheet\TimesheetProject.ispac ^
-            -d:CATALOG;/SSISDB/TimesheetProject/TimesheetProject;LAPTOP-VL9R9CSO ^
-            -authType:WIN ^
-            
+          & "C:\DevopTools\SSISDeploy.exe" `
+            -s:"C:\Repositories\sc_MehulPatel_2025\DatabaseAdministration\HandsOnProject\Timesheet\TimesheetProject.ispac" `
+            -d:"CATALOG;/SSISDB/TimesheetProject/TimesheetProject;LAPTOP-VL9R9CSO" `
+            -authType:WIN
 
 
          
