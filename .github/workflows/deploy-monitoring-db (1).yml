@@ -17,4 +17,4 @@ jobs:
 
       - name: Deploy monitoring database
         run: |
-          sqlcmd -S localhost -d master -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" -i DatabaseAdministration/HandsOnProject/Timesheet/SQLDatabaseCreation.sql
+          sqlcmd -S localhost -d master -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" -i DatabaseAdministration/HandsOnProject/Timesheet/SQLDatabaseCreation2.sql
