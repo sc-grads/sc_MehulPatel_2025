@@ -1,8 +1,6 @@
 name: Deploy TimesheetDB Schema
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -13,8 +11,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Deploy TimesheetDB and schema
-        shell: pwsh
+      - name: Deploy TimesheetDB and schema (local)
+        shell: powershell
         run: |
           sqlcmd -S localhost -d master -E -i DatabaseAdministration/HandsOnProject/Timesheet/SQLDatabaseCreation2.sql
 
