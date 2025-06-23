@@ -1,0 +1,18 @@
+name: Deploy TimesheetDB Schema
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy TimesheetDB and schema
+        run: |
+          sqlcmd -S localhost -d master -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" -i DatabaseAdministration/HandsOnProject/Timesheet/SQLDatabaseCreation.sql
