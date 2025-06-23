@@ -14,5 +14,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy TimesheetDB and schema
+        shell: pwsh
         run: |
-          sqlcmd -S localhost -d master -U "${{ secrets.SQL_USER }}" -P "${{ secrets.SQL_PASSWORD }}" -i DatabaseAdministration/HandsOnProject/Timesheet/SQLDatabaseCreation.sql
+          sqlcmd -S localhost -d master -E -i DatabaseAdministration/HandsOnProject/Timesheet/SQLDatabaseCreation2.sql
+
