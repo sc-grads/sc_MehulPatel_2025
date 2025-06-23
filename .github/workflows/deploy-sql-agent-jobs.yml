@@ -1,0 +1,17 @@
+name: Deploy SQL Agent Jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-jobs:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy All SQL Agent Jobs
+        shell: powershell
+        run: |
+          sqlcmd -S localhost -d msdb -E -i DatabaseAdministration/HandsOnProject/Timesheet/AllJobs.sql
