@@ -1,0 +1,18 @@
+name: Deploy TimesheetDB Schema
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy TimesheetDB and schema (local)
+        shell: powershell
+        run: |
+          sqlcmd -S localhost -d master -E -i DatabaseAdministration/HandsOnProject/Timesheet/SQLDatabaseCreation2.sql
+

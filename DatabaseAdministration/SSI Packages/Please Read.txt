@@ -1,0 +1,8 @@
+Please note that that for the following tasks I did not run the code for it as I did not create a new SQL server.
+
+TransferDatabase task
+TransferSQLServerObjects task
+TransferMasterStoredProcedures task 
+TransferJobs task
+TransderLogins task
+TransferErrorMessages task
