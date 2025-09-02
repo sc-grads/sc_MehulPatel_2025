@@ -167,7 +167,7 @@
 //            pC1.Display();
 //            pC2.Display();
 
-//            bool isEqual = pC1.Equals(pC2);
+//            bool isEqual = pC1.Equals(pC2); 
 //            Console.WriteLine("is it equal?" + isEqual);
 //            Console.ReadKey();
 
