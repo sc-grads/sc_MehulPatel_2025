@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\SSISDemos\\WpfDemo3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{842DA302-8EB1-49A1-9058-61DF2692F452}|WpfDemo3\\WpfDemo3.csproj|c:\\ssisdemos\\wpfdemo3\\wpfdemo3\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{842DA302-8EB1-49A1-9058-61DF2692F452}|WpfDemo3\\WpfDemo3.csproj|solutionrelative:wpfdemo3\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{842DA302-8EB1-49A1-9058-61DF2692F452}|WpfDemo3\\WpfDemo3.csproj|c:\\ssisdemos\\wpfdemo3\\wpfdemo3\\data\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{842DA302-8EB1-49A1-9058-61DF2692F452}|WpfDemo3\\WpfDemo3.csproj|solutionrelative:wpfdemo3\\data\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{842DA302-8EB1-49A1-9058-61DF2692F452}|WpfDemo3\\WpfDemo3.csproj|c:\\ssisdemos\\wpfdemo3\\wpfdemo3\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{842DA302-8EB1-49A1-9058-61DF2692F452}|WpfDemo3\\WpfDemo3.csproj|solutionrelative:wpfdemo3\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\SSISDemos\\WpfDemo3\\WpfDemo3\\Data\\Person.cs",
+              "RelativeDocumentMoniker": "WpfDemo3\\Data\\Person.cs",
+              "ToolTip": "C:\\SSISDemos\\WpfDemo3\\WpfDemo3\\Data\\Person.cs",
+              "RelativeToolTip": "WpfDemo3\\Data\\Person.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T08:45:59.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\SSISDemos\\WpfDemo3\\WpfDemo3\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "WpfDemo3\\MainWindow.xaml",
+              "ToolTip": "C:\\SSISDemos\\WpfDemo3\\WpfDemo3\\MainWindow.xaml",
+              "RelativeToolTip": "WpfDemo3\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-09-03T08:40:40.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\SSISDemos\\WpfDemo3\\WpfDemo3\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfDemo3\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\SSISDemos\\WpfDemo3\\WpfDemo3\\MainWindow.xaml.cs",
+              "RelativeToolTip": "WpfDemo3\\MainWindow.xaml.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAiwBEAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T08:40:23.597Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
