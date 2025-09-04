@@ -1,0 +1,16 @@
+C:\SSISDemos\LinqToSQL\LinqToSQL\bin\Debug\LinqToSQL.exe.config
+C:\SSISDemos\LinqToSQL\LinqToSQL\bin\Debug\LinqToSQL.exe
+C:\SSISDemos\LinqToSQL\LinqToSQL\bin\Debug\LinqToSQL.pdb
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL.csproj.AssemblyReference.cache
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\MainWindow.g.cs
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\App.g.cs
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL_MarkupCompile.cache
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL_MarkupCompile.lref
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\MainWindow.baml
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL.g.resources
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL.Properties.Resources.resources
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL.csproj.GenerateResource.cache
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL.csproj.CoreCompileInputs.cache
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL.exe
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL.pdb
+C:\SSISDemos\LinqToSQL\LinqToSQL\obj\Debug\LinqToSQL.exe.config
