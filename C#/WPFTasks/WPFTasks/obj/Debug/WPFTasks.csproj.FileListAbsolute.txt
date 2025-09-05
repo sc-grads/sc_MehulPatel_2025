@@ -1,0 +1,15 @@
+C:\SSISDemos\WPFTasks\WPFTasks\bin\Debug\WPFTasks.exe.config
+C:\SSISDemos\WPFTasks\WPFTasks\bin\Debug\WPFTasks.exe
+C:\SSISDemos\WPFTasks\WPFTasks\bin\Debug\WPFTasks.pdb
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks.csproj.AssemblyReference.cache
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\MainWindow.g.cs
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\App.g.cs
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks_MarkupCompile.cache
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks_MarkupCompile.lref
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\MainWindow.baml
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks.g.resources
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks.Properties.Resources.resources
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks.csproj.GenerateResource.cache
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks.csproj.CoreCompileInputs.cache
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks.exe
+C:\SSISDemos\WPFTasks\WPFTasks\obj\Debug\WPFTasks.pdb
