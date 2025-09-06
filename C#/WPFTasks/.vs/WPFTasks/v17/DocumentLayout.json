@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\SSISDemos\\WPFTasks\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2CE40AC3-5C81-49D2-A3AF-C3BA54294C4B}|WPFTasks\\WPFTasks.csproj|c:\\ssisdemos\\wpftasks\\wpftasks\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CE40AC3-5C81-49D2-A3AF-C3BA54294C4B}|WPFTasks\\WPFTasks.csproj|solutionrelative:wpftasks\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CE40AC3-5C81-49D2-A3AF-C3BA54294C4B}|WPFTasks\\WPFTasks.csproj|c:\\ssisdemos\\wpftasks\\wpftasks\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CE40AC3-5C81-49D2-A3AF-C3BA54294C4B}|WPFTasks\\WPFTasks.csproj|solutionrelative:wpftasks\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CE40AC3-5C81-49D2-A3AF-C3BA54294C4B}|WPFTasks\\WPFTasks.csproj|c:\\ssisdemos\\wpftasks\\wpftasks\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2CE40AC3-5C81-49D2-A3AF-C3BA54294C4B}|WPFTasks\\WPFTasks.csproj|solutionrelative:wpftasks\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\SSISDemos\\WPFTasks\\WPFTasks\\App.xaml.cs",
+              "RelativeDocumentMoniker": "WPFTasks\\App.xaml.cs",
+              "ToolTip": "C:\\SSISDemos\\WPFTasks\\WPFTasks\\App.xaml.cs",
+              "RelativeToolTip": "WPFTasks\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T18:11:24.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\SSISDemos\\WPFTasks\\WPFTasks\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "WPFTasks\\MainWindow.xaml",
+              "ToolTip": "C:\\SSISDemos\\WPFTasks\\WPFTasks\\MainWindow.xaml",
+              "RelativeToolTip": "WPFTasks\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-09-05T18:10:07.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\SSISDemos\\WPFTasks\\WPFTasks\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WPFTasks\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\SSISDemos\\WPFTasks\\WPFTasks\\MainWindow.xaml.cs",
+              "RelativeToolTip": "WPFTasks\\MainWindow.xaml.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAuwD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T18:10:05.349Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
