@@ -130,25 +130,18 @@ ORDER BY Name DESC;
 
 --21)
 SELECT 
-    ROW_NUMBER() OVER (
-        PARTITION BY addr.PostalCode 
-        ORDER BY sp.SalesYTD DESC
-    ) AS RowNumber,
-    p.LastName,
+    ROW_NUMBER() OVER(PARTITION BY pa.PostalCode ORDER BY sp.SalesYTD DESC) AS RowNumber,
+    pp.LastName,
     sp.SalesYTD,
-    addr.PostalCode
+    pa.PostalCode
 FROM [Sales].[SalesPerson] sp
-LEFT JOIN [Sales].[SalesTerritory] st
-    ON sp.TerritoryID = st.TerritoryID
-LEFT JOIN [Person].[Person] p
-    ON sp.BusinessEntityID = p.BusinessEntityID
-LEFT JOIN [Person].[BusinessEntityAddress] bea
-    ON p.BusinessEntityID = bea.BusinessEntityID
-LEFT JOIN [Person].[Address] addr
-    ON addr.AddressID = bea.AddressID
-WHERE sp.TerritoryID IS NOT NULL 
-  AND sp.SalesYTD <> 0
-ORDER BY addr.PostalCode ASC, RowNumber ASC;
+JOIN[Person].[Person] pp 
+ON sp.BusinessEntityID = pp.BusinessEntityID
+JOIN [Person].[BusinessEntityAddress] bea 
+ON bea.AddressID = pp.BusinessEntityID
+JOIN [Person].[Address] pa 
+ON pa.AddressID = bea.AddressID
+ORDER BY sp.SalesYTD DESC, pa.PostalCode ASC
 
 
 
