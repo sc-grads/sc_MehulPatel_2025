@@ -126,6 +126,14 @@ WHERE Name LIKE '%Manager%'
 ORDER BY Name DESC;
 
 --20)
+SELECT p.[BusinessEntityID], p.[LastName], p.[FirstName]
+FROM [Person].[Person] p
+INNER JOIN [Person].[BusinessEntityContact] bec
+    ON p.[BusinessEntityID] = bec.[BusinessEntityID]
+INNER JOIN [Person].[ContactType] ct
+    ON bec.[ContactTypeID] = ct.[ContactTypeID]
+WHERE ct.Name = 'Purchasing Manager'
+ORDER BY p.[LastName] ASC, p.[FirstName] ASC;
 
 
 --21)
@@ -190,3 +198,17 @@ ORDER BY SalesOrderID, ProductID;
 
 
 
+-- Selecting BusinessEntityID, LastName, and FirstName from multiple tables based on specified conditions
+SELECT pp.BusinessEntityID, LastName, FirstName
+    -- Retrieving BusinessEntityID, LastName, and FirstName columns
+    FROM Person.BusinessEntityContact AS pb 
+        -- Joining Person.BusinessEntityContact with Person.ContactType based on ContactTypeID
+        INNER JOIN Person.ContactType AS pc
+            ON pc.ContactTypeID = pb.ContactTypeID
+        -- Joining Person.BusinessEntityContact with Person.Person based on BusinessEntityID
+        INNER JOIN Person.Person AS pp
+            ON pp.BusinessEntityID = pb.PersonID
+    -- Filtering the results to include only records where the ContactType Name is 'Purchasing Manager'
+    WHERE pc.Name = 'Purchasing Manager'
+    -- Sorting the results by LastName and FirstName
+    ORDER BY LastName, FirstName; 
