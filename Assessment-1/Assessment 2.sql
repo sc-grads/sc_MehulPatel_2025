@@ -42,10 +42,36 @@ FROM [HumanResources].[Employee]
 ORDER BY salariedflag ASC, BusinessEntityID ASC
 
 --33)
-
+SELECT SP.BusinessEntityID,P.LastName,ST.Name AS TerritoryName,CR.Name AS CountryRegionName
+FROM [Sales].[SalesPerson] AS SP
+    JOIN Person.Person P 
+        ON SP.BusinessEntityID = P.BusinessEntityID
+    JOIN [Sales].[SalesTerritory]  ST 
+        ON SP.TerritoryID = ST.TerritoryID
+    JOIN [Person].[CountryRegion] CR 
+        ON ST.CountryRegionCode = CR.CountryRegionCode
+ORDER BY 
+    IIF(CR.Name = 'United States', ST.Name, CR.Name);
 
 
 --34)
+SELECT P.FirstName, P.LastName,
+    ROW_NUMBER() OVER (ORDER BY A.PostalCode) AS RowNumber,
+    RANK() OVER (ORDER BY A.PostalCode) AS Rank,
+	DENSE_RANK() OVER (ORDER BY A.PostalCode) AS DenseRank,
+	NTILE(4) OVER (ORDER BY SP.SalesYTD) AS Quartile,
+	SP.SalesYTD,A.PostalCode
+FROM [Sales].[SalesPerson] SP
+    JOIN [Sales].[SalesTerritory] ST 
+        ON SP.TerritoryID = ST.TerritoryID
+    JOIN [Person].[Person] P 
+        ON SP.BusinessEntityID = P.BusinessEntityID
+    JOIN [Person].[BusinessEntityAddress] BEA 
+        ON P.BusinessEntityID = BEA.BusinessEntityID
+    JOIN [Person].[Address] A 
+        ON BEA.AddressID = A.AddressID
+WHERE SP.SalesYTD > 0
+ORDER BY A.PostalCode ASC;
 
 
 --35)
@@ -72,7 +98,7 @@ WITH OrderedProducts AS  --creating a temp table
 (
     SELECT P.Name AS name,sod.SalesOrderID,ROW_NUMBER() OVER (ORDER BY p.Name) AS RowNum
     FROM [Production].[Product]  p 
-    FULL OUTER JOIN [Sales].[SalesOrderDetail] sod
+    FULL JOIN [Sales].[SalesOrderDetail] sod
     ON p.ProductID = sod.ProductID
 )
 SELECT name, salesorderid
@@ -85,7 +111,7 @@ WITH OrderedProducts AS  --creating a temp table
 (
     SELECT P.Name AS name,sod.SalesOrderID,ROW_NUMBER() OVER (ORDER BY p.Name) AS RowNum
     FROM [Production].[Product]  p 
-    FULL OUTER JOIN [Sales].[SalesOrderDetail] sod
+    FULL JOIN [Sales].[SalesOrderDetail] sod
     ON p.ProductID = sod.ProductID
 )
 SELECT name, salesorderid
@@ -96,7 +122,7 @@ ORDER BY name
 --40)
 SELECT P.Name AS name,sod.SalesOrderID
 FROM [Production].[Product]  p 
-FULL OUTER JOIN [Sales].[SalesOrderDetail] sod
+FULL JOIN [Sales].[SalesOrderDetail] sod
 ON p.ProductID = sod.ProductID
 ORDER BY name
 
@@ -147,14 +173,35 @@ ON soh.SalesPersonID = sp.BusinessEntityID
 GROUP BY YEAR(soh.OrderDate),sp.BusinessEntityID
 ORDER BY sp.BusinessEntityID,YEAR(soh.OrderDate);
 
---47)
+--47) 
+SELECT SUM(TotalSales) / COUNT(DISTINCT SalesPersonID) AS 'Average Sales Per Person'
+FROM (
+    SELECT SalesPersonID,
+    COUNT(SalesPersonID) AS TotalSales,
+    YEAR(OrderDate) AS SalesYear
+    FROM [Sales].[SalesOrderHeader]
+    WHERE SalesPersonID IS NOT NULL
+    GROUP BY SalesPersonID, YEAR(OrderDate)
+) AS dt
+
 
 --48)
-SELECT *
-FROM Production.ProductPhoto
-WHERE LargePhotoFileName LIKE '%green\_%' ESCAPE '\';
+
+SELECT * 
+FROM [Production].[ProductPhoto]
+WHERE LargePhotoFileName LIKE '%green_%'
+
 
 --49)
+SELECT A.AddressLine1, A.AddressLine2, A.City, A.PostalCode, SP.CountryRegionCode 
+FROM [Person].[Address] A
+	JOIN [Person].[StateProvince] SP ON A.StateProvinceID = SP.StateProvinceID
+WHERE SP.Name <> 'United States' AND A.City LIKE 'Pa%'
 
+
+--50)
+SELECT TOP (20) JobTitle, HireDate
+FROM [HumanResources].[Employee]
+ORDER BY HireDate DESC
 
 
